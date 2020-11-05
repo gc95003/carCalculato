@@ -1,6 +1,7 @@
 <template>
 	<view class="quankuan">
 		<SumPrice :needFul="needFul" :months="months" :prepayment="prepayment" :monthPay="monthPay" :interest="interest" :totalPrice="totalPrice" :dk="dk" :baoxian="baoxian" :totalTax="totalTax"></SumPrice>
+		<Choose @setPrice="handlePrice"></Choose>
 		<LoanCount v-on:changeLoanOp="changeLoanOp" :option="LoanOp" v-if="dk"></LoanCount>
 		<Necessary :insurance="bx" v-on:changeNumer="changeNumer" v-on:sidebarShow="sidebarShow" :carPurchaseTax="carPurchaseTax" :trafficInsurance="trafficInsurance"
 		 :totalTax="totalTax"></Necessary>
@@ -24,6 +25,7 @@
 	import Necessary from '../../calculator/components/detail/necessary.vue';
 	import SafeSum from '../../calculator/components/detail/safeSum.vue';
 	import Total from '../../calculator/components/detail/total.vue';
+	import Choose from '../../calculator/components/detail/choose.vue';
 	// import Sidebar from '../../calculator/components/detail/sidebar.vue';
 	
 	import Traveltax from '../../calculator/components/detail/traveltax.vue'
@@ -49,7 +51,8 @@
 			Dsz,
 			Glass,
 			Scratches,
-			LoanCount
+			LoanCount,
+			Choose
 		},
 		watch: {
 			
@@ -136,6 +139,17 @@
 			}
 		},
 		methods: {
+			//输入价格
+			handlePrice(price) {
+				if (price !== '') {
+					this.price = parseInt(price);
+				} else {
+					this.price = 0;
+				}
+				if(this.price > 0){
+					this.quankuan();
+				}
+			},
 			changeLoanOp(options){
 				if(options.key == 0){
 					this.LoanOp.PrepaymentPercent = options.val;

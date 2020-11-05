@@ -10,7 +10,7 @@
 </template>
 
 <script>
-	import Choose from './choose';
+	import Choose from '../../calculator/components/detail/choose.vue';
 	// import Sidebar from './sidebar'
 	// import router from '../router'
 	export default {

@@ -1,7 +1,9 @@
 <template>
 	<div class="sumPrice">
 		<div class="price">
-			<h4>全款总价（以实际到店为准）</h4>
+			<h4 v-if="!needFul">新车保险指导价（以实际到店为准）</h4>
+			<h4 v-if="!dk && needFul">全款总价（以实际到店为准）</h4>
+			<h4 v-if="dk">贷款购车总价（以实际到店为准）</h4>
 			<!-- <p>{{totalPrice}}</p> -->
 			<digitJump :digitTo="totalPrice" :digitFrom="0" :digitFiex='2' :digitDelay='400'></digitJump>
 		</div>

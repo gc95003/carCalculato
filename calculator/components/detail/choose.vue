@@ -10,6 +10,7 @@
 		   <input class="uni-input" type="number" v-model="price"  @input="setPrice" placeholder="请输入价格" />
       </label>
     </li> -->
+	<h4>购车价格</h4>
 	<input class="uni-input"  pattern="[0-9]*"  type="digit" v-model="price"  @input="setPrice" placeholder="请输入价格" />
   </ul>
 </template>
@@ -37,6 +38,14 @@
   padding-left: 15px;
   overflow: hidden;
   background: #fff;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  
+  .uni-input{
+	  text-align:right;
+	  padding-right: 10px;
+	  // font-size: 18px;
+  }
   // li{
   //   position: relative;
   //   height: 50px;
